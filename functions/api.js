@@ -6,7 +6,7 @@ const cors = require('cors');
 const serverless = require('serverless-http')
 
 // Routes
-const ledgerRoutes = require('../src/routes/ledger-customer.js');
+const ledgerRoutes = require('../src/routes/ledger-customer.routes');
 const ledgerTransactionRoutes = require('../src/routes/ledger-transaction.routes');
 const accountRoutes = require('../src/routes/account.routes');
 const transactionRoutes = require('../src/routes/transaction.routes');
