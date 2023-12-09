@@ -59,7 +59,7 @@ app.use(function (req, res, next) {
 app.use(cors(corsOptions));
 // app.use('/api/ledger-customer', ledgerRoutes);
 // app.use('/api/ledger-transaction', ledgerTransactionRoutes);
-app.use('/.netlify/functions/api/account', accountRoutes);
+app.use('/account', accountRoutes);
 // app.use('/api/transaction', transactionRoutes);
 // app.use('/api/card', cardRoutes);
 // app.use('/api/doc', docRoutes);
