@@ -56,12 +56,12 @@ app.use(function (req, res, next) {
 
 // Enable CORS for all routes
 app.use(cors(corsOptions));
-app.use('/api/ledger-customer', ledgerRoutes);
-app.use('/api/ledger-transaction', ledgerTransactionRoutes);
+// app.use('/api/ledger-customer', ledgerRoutes);
+// app.use('/api/ledger-transaction', ledgerTransactionRoutes);
 app.use('/.netlify/functions/api/account', accountRoutes);
-app.use('/api/transaction', transactionRoutes);
-app.use('/api/card', cardRoutes);
-app.use('/api/doc', docRoutes);
+// app.use('/api/transaction', transactionRoutes);
+// app.use('/api/card', cardRoutes);
+// app.use('/api/doc', docRoutes);
 
 app.listen(3000, () => {
   console.log(`Server Started at ${3000}`)
