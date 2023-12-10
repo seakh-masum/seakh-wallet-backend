@@ -13,8 +13,18 @@ const transactionRoutes = require('../src/routes/transaction.routes');
 const cardRoutes = require('../src/routes/card.routes');
 const docRoutes = require('../src/routes/doc.routes');
 
+const allowedOrigins = ['http://localhost:5173', 'https://seakh-wallet.web.app'];
+
 const corsOptions = {
-  origin: 'http://localhost:5173', // Replace with your React app's origin
+  // origin: 'http://localhost:5173', // Replace with your React app's origin
+  origin: function (origin, callback) {
+    // Check if the origin is in the allowedOrigins array or if it's undefined (e.g., a same-origin request)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
