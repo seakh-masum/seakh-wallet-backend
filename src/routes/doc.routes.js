@@ -25,10 +25,10 @@ router.post('/', async (req, res) => {
 })
 
 //Get all Method
-router.get('/:q', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     // await model.createIndexes({ title: 'text' });
-    const data = await model.find({ title: req.params.q });
+    const data = await model.find();
     res.json(data)
 
     // await model.createIndexes({ title: 'text' }, (err, result) => {

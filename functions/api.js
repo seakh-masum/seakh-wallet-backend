@@ -14,7 +14,7 @@ const cardRoutes = require('../src/routes/card.routes');
 const docRoutes = require('../src/routes/doc.routes');
 
 const corsOptions = {
-  origin: 'http://127.0.0.1:5173', // Replace with your React app's origin
+  origin: 'http://localhost:5173', // Replace with your React app's origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
@@ -22,7 +22,7 @@ const corsOptions = {
 
 const mongoString = 'mongodb+srv://masum:12345@cluster0.l2w7sfy.mongodb.net/';
 
-mongoose.connect(mongoString, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('Connected to MongoDB'))
+mongoose.connect(mongoString).then(() => console.log('Connected to MongoDB'))
   .catch(error => console.error('Error connecting to MongoDB:', error));
 const database = mongoose.connection;
 
@@ -57,12 +57,12 @@ app.use(function (req, res, next) {
 
 // Enable CORS for all routes
 app.use(cors(corsOptions));
-// app.use('/api/ledger-customer', ledgerRoutes);
-// app.use('/api/ledger-transaction', ledgerTransactionRoutes);
+app.use('/ledger-customer', ledgerRoutes);
+app.use('/ledger-transaction', ledgerTransactionRoutes);
 app.use('/account', accountRoutes);
-// app.use('/api/transaction', transactionRoutes);
-// app.use('/api/card', cardRoutes);
-// app.use('/api/doc', docRoutes);
+app.use('/transaction', transactionRoutes);
+app.use('/card', cardRoutes);
+app.use('/doc', docRoutes);
 
 app.listen(3000, () => {
   console.log(`Server Started at ${3000}`)
@@ -70,5 +70,3 @@ app.listen(3000, () => {
 
 
 module.exports.handler = serverless(app)
-
-// "start": "nodemon index.js"

@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
     expiryMonth: body.expiryMonth,
     expiryYear: body.expiryYear,
     network: body.network,
-  })
+  });
 
   try {
     await data.save().then(
@@ -33,7 +33,8 @@ router.post('/', async (req, res) => {
 //Get all Method
 router.get('/', async (req, res) => {
   try {
-    const data = await model.find();
+    const filter = req.query.type ? { type: req.query.type } : {}
+    const data = await model.find(filter);
     res.json(data)
   }
   catch (error) {
@@ -53,7 +54,7 @@ router.get('/:id', async (req, res) => {
 })
 
 //Update by ID Method
-router.patch('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const updatedData = req.body;
