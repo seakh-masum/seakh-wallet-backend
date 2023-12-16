@@ -30,7 +30,7 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
-const mongoString = 'mongodb+srv://masum:12345@cluster0.l2w7sfy.mongodb.net/';
+const mongoString = process.env.DATABASE_URL;
 
 mongoose.connect(mongoString).then(() => console.log('Connected to MongoDB'))
   .catch(error => console.error('Error connecting to MongoDB:', error));
