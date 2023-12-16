@@ -61,7 +61,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //Update by ID Method
-router.patch("/update/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const updatedData = req.body;
@@ -80,7 +80,7 @@ router.patch("/update/:id", async (req, res) => {
 });
 
 //Delete by ID Method
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await customerModel.findByIdAndDelete(id);
