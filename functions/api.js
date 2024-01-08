@@ -5,13 +5,22 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const serverless = require('serverless-http')
 
-// Routes
+// for wallet
 const ledgerRoutes = require('../src/routes/ledger-customer.routes');
 const ledgerTransactionRoutes = require('../src/routes/ledger-transaction.routes');
 const accountRoutes = require('../src/routes/account.routes');
 const transactionRoutes = require('../src/routes/transaction.routes');
 const cardRoutes = require('../src/routes/card.routes');
 const docRoutes = require('../src/routes/doc.routes');
+
+// For resumes
+const contactRoutes = require('../src/routes/contact.routes');
+const experienceRoutes = require('../src/routes/experience.routes');
+const educationRoutes = require('../src/routes/education.routes');
+const hobbyRoutes = require('../src/routes/hobby.routes');
+const profileRoutes = require('../src/routes/profile.routes');
+const projectRoutes = require('../src/routes/project.routes');
+const skillRoutes = require('../src/routes/skill.routes');
 
 const allowedOrigins = ['http://localhost:5173', 'https://seakh-wallet.web.app'];
 
@@ -73,6 +82,15 @@ app.use('/account', accountRoutes);
 app.use('/transaction', transactionRoutes);
 app.use('/card', cardRoutes);
 app.use('/doc', docRoutes);
+
+// for resumes
+app.use('/contact', contactRoutes);
+app.use('/education', educationRoutes);
+app.use('/experience', experienceRoutes);
+app.use('/hobby', hobbyRoutes);
+app.use('/profile', profileRoutes);
+app.use('/project', projectRoutes);
+app.use('/skill', skillRoutes);
 
 app.listen(3000, () => {
   console.log(`Server Started at ${3000}`)
